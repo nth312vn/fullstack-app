@@ -8,11 +8,13 @@ const postSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   status: {
     type: String,
     enum: ["TO LEARN", "LEARNING", "LEARNED"],
+  },
+  url: {
+    type: String,
   },
   user: {
     type: Schema.Types.ObjectId,

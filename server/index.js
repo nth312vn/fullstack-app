@@ -2,12 +2,15 @@ const express = require("express");
 const moongose = require("mongoose");
 require("dotenv").config();
 const authRoutes = require("./routes/auth");
-
+const postRouter = require("./routes/post");
+const usename = "nth3122000";
+const password = "zingme1234";
 const dbname = "mern-stack-app";
+console.log(process.env.DB_USERNAME);
 const connectDB = () => {
   try {
     moongose.connect(
-      `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.ztamso2.mongodb.net/${dbname}?retryWrites=true&w=majority`,
+      `mongodb+srv://${usename}:${password}@cluster0.ztamso2.mongodb.net/${dbname}?retryWrites=true&w=majority`,
       {
         // useCreateIndex: true,
         useNewUrlParser: true,
@@ -26,7 +29,10 @@ const app = express();
 app.get("/", (req, res) => {
   return res.send("hello");
 });
+app.use(express.json());
 app.use("/api/auth", authRoutes);
-app.listen(5000, () => {
+app.use("/api/posts", postRouter);
+
+app.listen(process.env.PORT, () => {
   console.log("connect success");
 });
