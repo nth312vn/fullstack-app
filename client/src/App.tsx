@@ -1,8 +1,14 @@
+import MainLayout from 'components/mainLayout/MainLayout';
 import React from 'react';
 import './App.css';
 
 function App() {
-  return <div className="App">hi</div>;
+  return (
+    <div>
+      hehe
+      <MainLayout />
+    </div>
+  );
 }
 
 export default App;
