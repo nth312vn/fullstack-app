@@ -27,6 +27,7 @@
     "linebreak-style": 0,
     "react/function-component-definition": 0,
     "no-shadow": "off",
-    "@typescript-eslint/no-shadow": "error"
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/ban-types": 0
   }
 }
