@@ -1,3 +1,4 @@
+import axiosClient, { getRequest, postRequest } from 'https/axiosClient';
 import { defaultValueLogin, FieldNameLogin } from 'constants/login.constant';
 import { pathName } from 'constants/pathName.constant';
 import useForm, { FormValues } from 'hooks/useForm';
@@ -17,9 +18,10 @@ const Login = () => {
       },
     },
   });
+
   const { formData, handleBlur, onChange, handleSubmit } = form;
   const handleSubmitForm = (data: FormValues) => {
-    console.log(data);
+    postRequest('api/auth/login');
   };
 
   return (
