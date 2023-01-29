@@ -4,9 +4,11 @@ import { pathName } from 'constants/pathName.constant';
 import useForm, { FormValues } from 'hooks/useForm';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginService } from 'services/login';
 
 const Login = () => {
+  const navigate = useNavigate();
   const form = useForm({
     defaultValue: defaultValueLogin,
     validation: {
@@ -20,8 +22,13 @@ const Login = () => {
   });
 
   const { formData, handleBlur, onChange, handleSubmit } = form;
-  const handleSubmitForm = (data: FormValues) => {
-    postRequest('api/auth/login');
+  const handleSubmitForm = async (data: FormValues) => {
+    const loginInfo = await loginService(data);
+    console.log(loginInfo);
+
+    if (loginInfo.success) {
+      navigate('/');
+    }
   };
 
   return (
